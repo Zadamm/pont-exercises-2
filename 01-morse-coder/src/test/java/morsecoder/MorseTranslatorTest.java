@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MorseTranslatorTest {
 	
 	@Test
-	public void translate_WithOutFileDictionary_Works() {
+	public void translate_WithOutFileDictionary_Works(){
 		
 		FakeOutputService fos = new FakeOutputService();
 				
@@ -20,7 +20,7 @@ public class MorseTranslatorTest {
 	}
 	
 	@Test 
-	public void translate_EmptyLineParam_ReturnsUserInstructions() {
+	public void translate_EmptyLineParam_ReturnsUserInstructions(){
 		
 		FakeOutputService fos = new FakeOutputService();
 		FakeUserInputService fuis = new FakeUserInputService();
@@ -34,7 +34,7 @@ public class MorseTranslatorTest {
 	}
 	
 	@Test
-	public void translate_ExitLineParam_ReturnsEXITLine() {
+	public void translate_ExitLineParam_ReturnsEXITLine(){
 		FakeOutputService fos = new FakeOutputService();
 		FakeUserInputService fuis = new FakeUserInputService();
 		fuis.line = "exit";
@@ -46,7 +46,7 @@ public class MorseTranslatorTest {
 	}	
 	
 	@Test
-	public void translate_NormalInputNormalDictionary_ReturnsNormalOutput() {
+	public void translate_NormalInputNormalDictionary_ReturnsNormalOutput(){
 		FakeOutputService fos = new FakeOutputService();
 		FakeUserInputService fuis = new FakeUserInputService();
 		fuis.line = "hello world";

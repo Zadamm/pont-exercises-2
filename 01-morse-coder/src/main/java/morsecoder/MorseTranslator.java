@@ -10,8 +10,12 @@ public class MorseTranslator implements ITranslator{
 	
 	private IOutputService output;
 	
-	public MorseTranslator(IDictionaryService ds, String fileName, IUserInputService input, IOutputService output) {
-		this.dictionary = ds.getDictionary(fileName);
+	public MorseTranslator(IDictionaryService ds, String fileName, IUserInputService input, IOutputService output){
+		try {
+			this.dictionary = ds.getDictionary(fileName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.input = input;
 		this.output = output;
 	}

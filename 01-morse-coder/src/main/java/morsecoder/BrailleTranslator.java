@@ -11,7 +11,11 @@ public class BrailleTranslator implements ITranslator{
 	private IOutputService output;
 	
 	public BrailleTranslator(IDictionaryService ds, String fileName, IUserInputService input, IOutputService output) {
-		this.dictionary = ds.getDictionary(fileName);
+		try {
+			this.dictionary = ds.getDictionary(fileName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.input = input;
 		this.output = output;
 	}
