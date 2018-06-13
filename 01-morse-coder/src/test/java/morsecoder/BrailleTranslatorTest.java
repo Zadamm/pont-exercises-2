@@ -4,16 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class MorseTranslatorTest {
-	
+public class BrailleTranslatorTest {
 	@Test
 	public void translate_WithOutFileDictionary_Works() {
 		
 		FakeOutputService fos = new FakeOutputService();
 				
-		MorseTranslator mt = new MorseTranslator(new FakeDictionaryService(),"", new FakeUserInputService(), fos);
+		BrailleTranslator bt = new BrailleTranslator(new FakeDictionaryService(),"", new FakeUserInputService(), fos);
 		
-		String translated = mt.translate();
+		String translated = bt.translate();
 		
 		assertEquals(fos.lastLine, translated);
 		
@@ -26,10 +25,9 @@ public class MorseTranslatorTest {
 		FakeUserInputService fuis = new FakeUserInputService();
 		fuis.line = "";
 		
-		MorseTranslator mt = new MorseTranslator(new FakeDictionaryService(),"", fuis, fos);
+		BrailleTranslator bt = new BrailleTranslator(new FakeDictionaryService(),"", fuis, fos);
 		
-		String translated = mt.translate();
-		
+		String translated = bt.translate();		
 		assertEquals("Kerem gepeljen be szoveget", translated);		
 	}
 	
@@ -39,22 +37,22 @@ public class MorseTranslatorTest {
 		FakeUserInputService fuis = new FakeUserInputService();
 		fuis.line = "exit";
 		
-		MorseTranslator mt = new MorseTranslator(new FakeDictionaryService(),"", fuis, fos);
+		BrailleTranslator bt = new BrailleTranslator(new FakeDictionaryService(),"", fuis, fos);
 		
-		String translated = mt.translate();		
-		assertEquals("EXIT", translated);		
-	}	
+		String translated = bt.translate();		
+		assertEquals("exit", translated);		
+	}
 	
 	@Test
 	public void translate_NormalInputNormalDictionary_ReturnsNormalOutput() {
 		FakeOutputService fos = new FakeOutputService();
 		FakeUserInputService fuis = new FakeUserInputService();
 		fuis.line = "hello world";
-		String expected = " .... . .-.. .-.. ---/ .-- --- .-. .-.. -..";
+		String expected = "&#10259&#10257&#10247&#10247&#10261&#10240&#10298&#10261&#10263&#10247&#10265";
 		
-		MorseTranslator mt = new MorseTranslator(new DictionaryService(),"morse.in", fuis, fos);
+		BrailleTranslator bt = new BrailleTranslator(new DictionaryService(),"braille.in", fuis, fos);
 		
-		String translated = mt.translate();		
+		String translated = bt.translate();		
 		assertEquals(expected, translated);		
 	}
 }

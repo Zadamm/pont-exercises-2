@@ -2,18 +2,23 @@ package morsecoder;
 
 import java.util.HashMap;
 
-public class MorseTranslator {
+public class MorseTranslator implements ITranslator{
 	
 	private HashMap<String,String> dictionary = new HashMap<String, String>();
 	
-	private IDictionaryService ds;
+	private IUserInputService input;
 	
-	public MorseTranslator(IDictionaryService ds, String fileName) {
-		this.ds = ds;
+	private IOutputService output;
+	
+	public MorseTranslator(IDictionaryService ds, String fileName, IUserInputService input, IOutputService output) {
 		this.dictionary = ds.getDictionary(fileName);
+		this.input = input;
+		this.output = output;
 	}
 	
-	public String translate(String line) {
+	public String translate() {
+		
+		String line = input.readLine();		
 
 		String morseLine = "";
 	
@@ -33,6 +38,11 @@ public class MorseTranslator {
 			morseLine = "Kerem gepeljen be szoveget";
 		}
 		
-		return morseLine;
+		if(line.equals("EXIT")) {
+			return line;
+		}else {
+			output.writeOut(morseLine);
+			return morseLine;
+		}
 	}
 }

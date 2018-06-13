@@ -3,18 +3,23 @@ package morsecoder;
 public class App 
 {
     public static void main( String[] args )
-    { 	    	
-    	MorseTranslator mt = new MorseTranslator(new DictionaryService(), "morse.in");
-    	
-    	IUserInputService input = new UserInputService();    	
+    { 	    	    	
     	
 		System.out.println("Gépeljen be egy szöveget es leforditom morse szovegre: ");
 		
-		Translator t = new Translator(mt, input);
+		ITranslator mt = new MorseTranslator(new DictionaryService(), "morse.in", new UserInputService(), new SysoOutputService());
 		
 		String exitSign;
 		do {
-			exitSign = t.startTranslate();
+			exitSign = mt.translate();
+		}while(!exitSign.equals("EXIT"));
+		
+		System.out.println("Gépeljen be egy szöveget es leforditom braille szovegre: ");
+		
+		ITranslator bt = new BrailleTranslator(new DictionaryService(), "braille.in", new UserInputService(), new HtmlOutputService());
+		
+		do {
+			exitSign = bt.translate();
 		}while(!exitSign.equals("exit"));
     }
 

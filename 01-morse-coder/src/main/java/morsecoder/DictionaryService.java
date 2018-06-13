@@ -14,7 +14,7 @@ public class DictionaryService implements IDictionaryService {
 			
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-			
+						
 			while(br.ready()) {
 				String line = br.readLine();
 				String splittedLine [] = line.split("\\s+");
