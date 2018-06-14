@@ -2,11 +2,12 @@ package eu.pontsystems.beer;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class BeerSongTest {
+public class SongTest {
 
-	BeerSong bs = new BeerSong();
+	Song bs = new Song();
 	
 	@Test
 	public void sing_FunctionAndIteration_ReturnsSame() {
@@ -22,7 +23,7 @@ public class BeerSongTest {
 	
 	@Test
 	public void verse_ParamOne_ReturnsNormalVerse() {
-		String verseOne =	"1 bottle of beer on the wall, 1 bottle of beer. "+"\n"+ 
+		String verseOne =	"1 bottle of beer on the wall, 1 bottle of beer."+"\n"+ 
 							"Take one down and pass it around, no more bottles of beer on the wall."+"\n";
 		
 		assertEquals(verseOne, bs.verse(1, 0));
