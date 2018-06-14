@@ -9,13 +9,13 @@ public class SongTest {
 
 	Song bs = new Song();
 	
-	@Test
+	@Test	
 	public void sing_FunctionAndIteration_ReturnsSame() {
 		String functionSing = bs.sing();
 		String interationSing = "";
 		
 		for(int i=99; i>=0; i--) {
-			interationSing += bs.verse(i, 99);
+			interationSing += bs.verse(i);
 		}
 		
 		assertEquals(interationSing, functionSing);
@@ -26,7 +26,7 @@ public class SongTest {
 		String verseOne =	"1 bottle of beer on the wall, 1 bottle of beer."+"\n"+ 
 							"Take one down and pass it around, no more bottles of beer on the wall."+"\n";
 		
-		assertEquals(verseOne, bs.verse(1, 0));
+		assertEquals(verseOne, bs.verse(1));
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class SongTest {
 		String verseZero =	"No more bottles of beer on the wall, no more bottles of beer." +"\n"+  
 							"Go to the store and buy some more, " + 99 + " bottles of beer on the wall."+"\n";
 		
-		assertEquals(verseZero, bs.verse(0, 99));
+		assertEquals(verseZero, bs.verse(0));
 	}
 	
 	
@@ -50,5 +50,15 @@ public class SongTest {
 								"Take one down and pass it around, " + 30 + " bottles of beer on the wall."+"\n";
 		
 		assertEquals(verse34to31, bs.verses(34, 31));
+	}
+	
+	@Test 
+	public void songConstructor_WithParams_ReturnsNormalVerse() {
+		Song s = new Song("jug", "milk");
+		
+		String verse3 = "3 jugs of milk on the wall, 3 jugs of milk.\n"+ 
+						"Take one down and pass it around, 2 jugs of milk on the wall.\n";
+		
+		assertEquals(verse3, s.verse(3));
 	}
 }
