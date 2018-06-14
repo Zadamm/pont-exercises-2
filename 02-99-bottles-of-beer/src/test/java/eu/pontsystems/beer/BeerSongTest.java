@@ -5,18 +5,49 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class BeerSongTest {
-	
-	@Test
-	public void sing_NotEnoughBeer_DoesntSingReturnsZero() {
-		BeerSong bs = new BeerSong();
-		assertEquals(0,bs.sing(1));
-		assertEquals(0,bs.sing(0));
-	}
-	
-	@Test
-	public void sing_EnoughBeer_SingsAndReturnsOne() {
-		BeerSong bs = new BeerSong();
-		assertEquals(1,bs.sing(3));
-	}
 
+	BeerSong bs = new BeerSong();
+	
+	@Test
+	public void sing_FunctionAndIteration_ReturnsSame() {
+		String functionSing = bs.sing();
+		String interationSing = "";
+		
+		for(int i=99; i>=0; i--) {
+			interationSing += bs.verse(i, 99);
+		}
+		
+		assertEquals(interationSing, functionSing);
+	}
+	
+	@Test
+	public void verse_ParamOne_ReturnsNormalVerse() {
+		String verseOne =	"1 bottle of beer on the wall, 1 bottle of beer. "+"\n"+ 
+							"Take one down and pass it around, no more bottles of beer on the wall."+"\n";
+		
+		assertEquals(verseOne, bs.verse(1, 0));
+	}
+	
+	@Test
+	public void verse_ParamZeroAnd99_ReturnsNormalVerse() {
+		String verseZero =	"No more bottles of beer on the wall, no more bottles of beer." +"\n"+  
+							"Go to the store and buy some more, " + 99 + " bottles of beer on the wall."+"\n";
+		
+		assertEquals(verseZero, bs.verse(0, 99));
+	}
+	
+	
+	@Test
+	public void verses_Param34to31_ReturnsNormalVerse() {
+		String verse34to31 = 	34 + " bottles of beer on the wall, "	+ 34 + " bottles of beer."+"\n"+ 		
+								"Take one down and pass it around, " + 33 + " bottles of beer on the wall."+"\n"+
+								33 + " bottles of beer on the wall, "	+ 33 + " bottles of beer."+"\n"+ 		
+								"Take one down and pass it around, " + 32 + " bottles of beer on the wall."+"\n"+
+								32 + " bottles of beer on the wall, "	+ 32 + " bottles of beer."+"\n"+ 		
+								"Take one down and pass it around, " + 31 + " bottles of beer on the wall."+"\n"+
+								31 + " bottles of beer on the wall, "	+ 31 + " bottles of beer."+"\n"+ 		
+								"Take one down and pass it around, " + 30 + " bottles of beer on the wall."+"\n";
+		
+		assertEquals(verse34to31, bs.verses(34, 31));
+	}
 }
