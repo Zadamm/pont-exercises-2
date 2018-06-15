@@ -17,10 +17,11 @@ public class SongAttributes {
 
 
 	public String getQuantity(int q) {
-		if(q>= 1) return Integer.toString(q);
-		if(q == 0) return "no more";
-		if(q == -1) return "99";
-		else return "valami nem jo";		
+		String quantity = "";
+		if(q>= 1) quantity = Integer.toString(q);
+		else if(q == 0) quantity = "no more";
+		else quantity = "99";
+		return quantity;
 	}
 	
 	public String getContainer(int q) {
